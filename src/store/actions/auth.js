@@ -47,9 +47,10 @@ export const auth = (email, password, mode) => {
             password: password,
             returnSecureToken: true
         }
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBR62DPjm7Vn6S9B5-ShPGd1nK65FOHyr4'
+        const API_KEY = process.env.REACT_APP_API_KEY 
+        let url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`
         if(!mode)
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBR62DPjm7Vn6S9B5-ShPGd1nK65FOHyr4'
+            url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`
         
             axios.post(url, authData)
             .then(resp => {
